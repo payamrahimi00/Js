@@ -1,28 +1,31 @@
 var products = [
     {
-        name : "BMW",
-        Price : 25
+        name: "BMW",
+        price: 25
     },
-
     {
-        name : "AUDI",
-        Price : 34
+        name: "AUDI",
+        price: 34
     },
-
     {
-        name : "Merceds",
-        Price : 61
-    },
+        name: "Merceds",
+        price: 61
+    }
 ];
-var cart = prompt("Insert The product name: INSERT EXIT FOR END").trim();
+
+var exitCommand = "exit";
+var cart = prompt("Insert the product name (type 'exit' to end):").trim().toLowerCase();
 var total = 0;
-while(cart !== "EXIT") {
-    var A = products.find( p => p.name ===  cart)
-    if(A) {
-        total += A.Price;
+
+while (cart !== exitCommand) {
+    var product = products.find(p => p.name.toLowerCase() === cart);
+    
+    if (product) {
+        total += product.price;
+        console.log(`Added ${product.name} ($${product.price}) to cart. Current total: $${total}`);
     } else {
         console.log("Product not found!");
     }
-    cart = prompt("Insert the next product name : INSERT EXIT FOR END ").trim();
+    
+    cart = prompt("Insert the next product name (type 'exit' to end):").trim().toLowerCase();
 }
-console.log("SUM", total);
