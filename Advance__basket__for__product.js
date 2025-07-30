@@ -119,7 +119,9 @@ var proDucts = [
  * ============================================= */
 // Empty array that will hold user's selected products
 var baSket = [];  // Starts empty: []
-
+var tax = 1.5 //tax for product price more  15$
+var sum = 0;
+var i = 0;
 /* =============================================
  *        PRODUCT ADDITION PROCESS (LOOP)
  * ============================================= */
@@ -149,15 +151,22 @@ while (true) {
         console.log("Product not found. Try again.");
         continue;  // Skip to next loop iteration
     }
-
+    
     /* =========================================
      *       ADD TO BASKET & CONFIRMATION
      * ========================================= */
     // Add product copy to basket array
-    baSket.push({ name: product.name, price: product.price });
+    if(product.price > 15) {
+        baSket.push({ name: product.name, price: product.price + tax });     
+    } else{
+        baSket.push({ name: product.name, price: product.price });
+    }
+ 
+    
     
     // Print success message with template literal
     console.log(`${product.name} added to basket for $${product.price}`);
+   
 }
 
 /* =============================================
@@ -221,6 +230,9 @@ function displayBasket() {
  *           USER ACTION INTERFACE
  * ============================================= */
 // Ask user what they want to do
+var T = baSket.map(function(Price){
+    return Price.price
+})
 var action = Number(prompt(
     "1: Delete item | 2: Add item | 3: View basket | Any other key: Exit"
 ));
@@ -242,4 +254,10 @@ switch (action) {
         
     default:  // Exit program
         console.log("Exiting...");
+        while (i < T.length) {
+            sum = sum + T[i]
+            i++
+        }
+        console.log(sum,"Sum basket + tax");
+        
 }
