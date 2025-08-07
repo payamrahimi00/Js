@@ -50,3 +50,94 @@ console.log("- \"\" (empty string)");
 console.log("- null");
 console.log("- undefined");
 console.log("- NaN");
+///////////////////////////////////////////
+///////////////////////////////////////
+// Let's define different types of values
+let a = 0;              // falsy
+let b = "hello";        // truthy (non-empty string)
+let c = "";             // falsy (empty string)
+let d = null;           // falsy
+let e = undefined;      // falsy
+let f = NaN;            // falsy
+let g = 42;             // truthy (non-zero number)
+let h = {};             // truthy (empty object)
+let i = [];             // truthy (empty array)
+
+// Let's test them using if conditions
+
+if (a) {
+  console.log("a is truthy");
+} else {
+  console.log("a is falsy"); // this will run
+}
+
+if (b) {
+  console.log("b is truthy"); // this will run
+} else {
+  console.log("b is falsy");
+}
+
+if (c) {
+  console.log("c is truthy");
+} else {
+  console.log("c is falsy"); // this will run
+}
+
+if (d) {
+  console.log("d is truthy");
+} else {
+  console.log("d is falsy"); // this will run
+}
+
+if (e) {
+  console.log("e is truthy");
+} else {
+  console.log("e is falsy"); // this will run
+}
+
+if (f) {
+  console.log("f is truthy");
+} else {
+  console.log("f is falsy"); // this will run
+}
+
+if (g) {
+  console.log("g is truthy"); // this will run
+} else {
+  console.log("g is falsy");
+}
+
+if (h) {
+  console.log("h is truthy"); // this will run
+} else {
+  console.log("h is falsy");
+}
+
+if (i) {
+  console.log("i is truthy"); // this will run
+} else {
+  console.log("i is falsy");
+}
+
+// You can also test directly in console:
+console.log(Boolean(""));      // false
+console.log(Boolean("text"));  // true
+console.log(Boolean(0));       // false
+console.log(Boolean(1));       // true
+console.log(Boolean([]));      // true
+console.log(Boolean({}));      // true
+console.log(Boolean(undefined)); // false
+console.log(Boolean(null));     // false
+console.log(Boolean(NaN));      // false
+
+// Example in a function
+function checkLogin(username) {
+  if (username) {
+    console.log("Welcome, " + username);
+  } else {
+    console.log("Please enter your username"); // this will run if username is falsy
+  }
+}
+
+checkLogin("");      // Empty string → falsy → will ask for username
+checkLogin("Ali");   // Non-empty → truthy → will welcome the user
